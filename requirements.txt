@@ -1,0 +1,13 @@
+# SQL Server Connection
+pyodbc>=5.0.0
+
+# Snowflake Connection (for later phases)
+snowflake-connector-python>=3.6.0
+
+# Data Processing
+pandas>=2.1.0
+pyarrow>=14.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+pyyaml>=6.0

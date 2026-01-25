@@ -1,0 +1,7 @@
+.env
+.venv
+AdventureWorks2022.bak
+__pycache__/
+migration.log
+snowflake_ddl/conversion_report.json
+data/

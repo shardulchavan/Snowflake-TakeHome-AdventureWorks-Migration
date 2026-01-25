@@ -1,0 +1,150 @@
+{
+  "description": "SQL Server to Snowflake data type mapping",
+  "mappings": {
+    "int": {
+      "snowflake_type": "NUMBER",
+      "precision": 38,
+      "scale": 0
+    },
+    "bigint": {
+      "snowflake_type": "NUMBER",
+      "precision": 38,
+      "scale": 0
+    },
+    "smallint": {
+      "snowflake_type": "NUMBER",
+      "precision": 38,
+      "scale": 0
+    },
+    "tinyint": {
+      "snowflake_type": "NUMBER",
+      "precision": 38,
+      "scale": 0
+    },
+    "bit": {
+      "snowflake_type": "BOOLEAN"
+    },
+    "decimal": {
+      "snowflake_type": "NUMBER",
+      "use_source_precision": true
+    },
+    "numeric": {
+      "snowflake_type": "NUMBER",
+      "use_source_precision": true
+    },
+    "money": {
+      "snowflake_type": "NUMBER",
+      "precision": 19,
+      "scale": 4
+    },
+    "smallmoney": {
+      "snowflake_type": "NUMBER",
+      "precision": 10,
+      "scale": 4
+    },
+    "float": {
+      "snowflake_type": "FLOAT"
+    },
+    "real": {
+      "snowflake_type": "FLOAT"
+    },
+    "date": {
+      "snowflake_type": "DATE"
+    },
+    "datetime": {
+      "snowflake_type": "TIMESTAMP_NTZ"
+    },
+    "datetime2": {
+      "snowflake_type": "TIMESTAMP_NTZ"
+    },
+    "smalldatetime": {
+      "snowflake_type": "TIMESTAMP_NTZ"
+    },
+    "time": {
+      "snowflake_type": "TIME"
+    },
+    "datetimeoffset": {
+      "snowflake_type": "TIMESTAMP_TZ"
+    },
+    "char": {
+      "snowflake_type": "CHAR",
+      "use_source_length": true
+    },
+    "varchar": {
+      "snowflake_type": "VARCHAR",
+      "use_source_length": true
+    },
+    "nchar": {
+      "snowflake_type": "CHAR",
+      "use_source_length": true,
+      "note": "Unicode - length adjusted"
+    },
+    "nvarchar": {
+      "snowflake_type": "VARCHAR",
+      "use_source_length": true,
+      "note": "Unicode - length adjusted"
+    },
+    "text": {
+      "snowflake_type": "VARCHAR",
+      "precision": 16777216
+    },
+    "ntext": {
+      "snowflake_type": "VARCHAR",
+      "precision": 16777216
+    },
+    "binary": {
+      "snowflake_type": "BINARY",
+      "use_source_length": true
+    },
+    "varbinary": {
+      "snowflake_type": "BINARY",
+      "use_source_length": true
+    },
+    "image": {
+      "snowflake_type": "BINARY",
+      "precision": 8388608
+    },
+    "uniqueidentifier": {
+      "snowflake_type": "VARCHAR",
+      "precision": 36
+    },
+    "xml": {
+      "snowflake_type": "VARCHAR",
+      "precision": 16777216,
+      "note": "Store as string, parse with JSON functions if needed"
+    },
+    "geography": {
+      "snowflake_type": "GEOGRAPHY",
+      "note": "Snowflake native geography type"
+    },
+    "geometry": {
+      "snowflake_type": "GEOMETRY",
+      "note": "Snowflake native geometry type"
+    },
+    "hierarchyid": {
+      "snowflake_type": "VARCHAR",
+      "precision": 4000,
+      "note": "Store as path string"
+    },
+    "sql_variant": {
+      "snowflake_type": "VARIANT",
+      "note": "Snowflake semi-structured type"
+    }
+  },
+  "special_cases": {
+    "nvarchar_max_length_adjustment": {
+      "description": "NVARCHAR uses 2 bytes per char in SQL Server, divide by 2 for Snowflake",
+      "apply": true
+    },
+    "varchar_max": {
+      "description": "VARCHAR(MAX) maps to VARCHAR(16777216)",
+      "max_indicator": -1,
+      "snowflake_length": 16777216
+    },
+    "identity_handling": {
+      "description": "Identity columns become sequences in Snowflake",
+      "create_sequence": true,
+      "sequence_naming": "{schema}_{table}_{column}_seq"
+    }
+  }
+}
