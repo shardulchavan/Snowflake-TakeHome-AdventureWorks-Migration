@@ -1,4 +1,5 @@
-# snowflake-adventureworks-migration
+# SnowBridge
+AI-powered database migration engine, T-SQL to Snowflake, automated end to end.
 
 > Enterprise database migration framework that uses GPT-4 to convert T-SQL views and stored procedures to Snowflake, the part every migration tool fails at.
 
